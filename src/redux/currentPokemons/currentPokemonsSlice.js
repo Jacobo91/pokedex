@@ -3,11 +3,17 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const loadCurrentPokemons = createAsyncThunk(
     'currentPokemons/loadCurrentPokemons',
-    async(name) => {
+    async(pokemonNames) => {
         try{
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-            const data = await response.json();
-            return data;
+            const pokemonData = [];
+
+            for (const name of pokemonNames){
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+                const data = await response.json();
+                pokemonData.push(data)
+            }
+            return pokemonData;
+            
         }
         catch(error){
             throw new Error(error);
@@ -31,9 +37,10 @@ const currentPokemonsSlice = createSlice(
                     state.hasError = false;
                 })
                 .addCase(loadCurrentPokemons.fulfilled, (state, action) => {
-                    state.pokemons = [...state.pokemons, action.payload];
+                    state.pokemons = action.payload;
                     state.isLoading = false;
                     state.hasError = false;
+                    console.log(action.payload);
                 })
                 .addCase(loadCurrentPokemons.rejected, (state) => {
                     state.isLoading = false;

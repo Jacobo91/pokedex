@@ -16,7 +16,7 @@ export function Pokedex(){
 
     useEffect(() => {
         dispatch(loadGenerationsURLs())
-    }, []);
+    }, [url]);
 
     return(
         <section>

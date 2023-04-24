@@ -1,3 +1,4 @@
+import "./pokemons.css"
 import { useDispatch, useSelector } from 'react-redux';
 import './pokemons.css';
 import { selectCurrentGeneration, loadCurrentGeneration } from '../../redux/currentGeneration/currentGenerationSlice';
@@ -16,7 +17,6 @@ export function Pokemons({ url }){
 
     const pokemonNames = currentGeneration.generation.length === 0 ? [] : currentGeneration.generation.pokemon_species.slice(0, 9).map(pokemon => pokemon.name);
     
-    console.log(currentGeneration)
     return(
         <section>
             {
@@ -26,7 +26,7 @@ export function Pokemons({ url }){
                     <h3>Main Region: {currentGeneration.generation.main_region.name}</h3>
                 </header>
             }
-            <section className='gallery'>
+            <section>
                 <Card pokemonNames={pokemonNames} />
             </section>
         </section>

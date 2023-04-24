@@ -1,7 +1,8 @@
+import "./card.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentPokemons, loadCurrentPokemons } from "../../redux/currentPokemons/currentPokemonsSlice";
 import { useEffect } from "react";
-
+import { NavLink } from "react-router-dom";
 
 
 
@@ -11,17 +12,23 @@ export function Card({ pokemonNames }){
     const dispatch = useDispatch();
 
     useEffect(() => {
-        pokemonNames.map(name => dispatch(loadCurrentPokemons(name)))
+        dispatch(loadCurrentPokemons(pokemonNames))
     }, [pokemonNames])
-
-    console.log(pokemons)
+    
     return(
-        <div>
+        <section className="gallery">
             {
-                pokemons.pokemons.map(pokemon => (
-                    <img src={pokemon.sprites.other.dream_world.front_default} alt="" />
-                ))
+                pokemons.pokemons.length === 0 ? "No data available" :
+                    pokemons.pokemons.map(pokemon => (
+                        <NavLink className="card" key={pokemon.id}>
+                                <img 
+                                    className="pokemon-img"
+                                    src={pokemon.sprites.front_default} 
+                                />  
+                        </NavLink>
+                    ))
             }
-        </div>
+        </section>
     )
 }
+

@@ -1,12 +1,13 @@
 
 main{
-    height: 100vh;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-image: url("https://thumbs.dreamstime.com/z/pokeball-icon-element-cyber-security-mobile-concept-web-apps-thin-line-website-design-development-app-white-134160228.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    
 }   
 
 .main-links-wrapper{
