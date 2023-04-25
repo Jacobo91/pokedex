@@ -7,7 +7,7 @@ import { Berries } from '../pages/berries/Berries';
 import { Items } from '../pages/items/Items';
 import { Moves } from '../pages/moves/Moves';
 import { Locations } from '../pages/locations/Locations';
-
+import { PokemonData } from "../components/pokemon_data/PokemonData";
 
 export function App() {
   return (
@@ -16,7 +16,7 @@ export function App() {
           <Route path="/" element={<Home/>} />
 
           <Route path="/Pokédex" element={<Pokedex/>} />
-            
+            <Route path="/Pokédex/:pokemon_data" element={<PokemonData />}/>
             
           <Route path="/Types" element={<Types/>} />
           <Route path="/Abilities" element={<Abilities/>} />

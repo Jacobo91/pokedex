@@ -20,7 +20,11 @@ export function Card({ pokemonNames }){
             {
                 pokemons.pokemons.length === 0 ? "No data available" :
                     pokemons.pokemons.map(pokemon => (
-                        <NavLink className="card" key={pokemon.id}>
+                        <NavLink
+                        to={`/Pokédex/${pokemon.name}`}
+                            className="card" 
+                            key={pokemon.id}
+                        >
                                 <img 
                                     className="pokemon-img"
                                     src={pokemon.sprites.front_default} 
