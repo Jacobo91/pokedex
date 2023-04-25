@@ -9,7 +9,7 @@ import { Pokemons } from '../../components/pokemons/Pokemons';
 
 export function Pokedex(){
 
-    const [url, setURL] = useState("https://pokeapi.co/api/v2/generation/1/");
+    const [url, setURL] = useState("");
 
     const generations = useSelector(selectGenerationsURLs);
     const dispatch = useDispatch();

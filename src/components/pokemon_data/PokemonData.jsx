@@ -1,8 +1,11 @@
+import "./pokemon_data.css";
 import { useParams } from "react-router-dom"
 import { selectPokemon, loadPokemon } from "../../redux/pokemon/pokemonSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-
+import { colorByType } from "../../colorByTypes";
+import { backgroundByType } from '../../backgroundByTypes';
+import { statsObj } from "../../statsObject";
 
 export function PokemonData(){
 
@@ -13,7 +16,22 @@ export function PokemonData(){
         useEffect(() => {
             dispatch(loadPokemon(pokemon_data))
         }, []);
-        
+
+        const typeColor = {
+            backgroundColor: data ? colorByType[data.types[0].type.name] : "#f2f2f2",
+            display: "inline-block",
+            color: "white",
+            padding: "5px 30px",
+            fontSize: "0.9rem",
+            borderRadius: "20px",
+        };
+
+        const backgroundColor = {
+            backgroundColor: data ? backgroundByType[data.types[0].type.name] : "#f2f2f2",
+            borderRadius: "50%",
+            margin: "1.2rem",
+        };
+
         if(isLoading){
             return  <p>Loading...</p>
         }
@@ -25,88 +43,79 @@ export function PokemonData(){
         
     
     return(
-        <section>
+        <div className="pokemon-card--wrapper" >
+        <section className="pokemon-card">
 
         {
             data  && (
                 <section key={data.id} >
 
-                <img src={data.sprites.front_default} alt={data.name} />
+                <img 
+                src={data.sprites.front_default} 
+                alt={data.name} 
+                style={backgroundColor}
+                />
                 
-                <article>
-                    <p>{`#${data.id}`}</p>
+                <p>{`#${data.id}`}</p>
+
+                <article className="pokemon-title">
                     <h1>{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h1>
-                    <p>
-                        {data.types[0].type.name}
+                    <p
+                        style={typeColor}
+                    >
+                        {data.types[0].type.name.toUpperCase()}
                     </p>
                 </article>
-                
-                <article>
-                    stats
+
+                <article className="stats-wrapper" >
+                    <h3 className="description-titles">Abilities</h3>
+                    <article className="abilities">
+                        {
+                            data.abilities.map(ability => (
+                                <article className="abilities">
+                                    <p className="ability">{ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</p>
+                                </article>
+                            ))
+                        }
+                    </article>
+                </article>
+
+                <article className="stats-wrapper">
+                    <h3 className="description-titles">
+                        Stats
+                    </h3>
+
+                    {
+                        data.stats.map(stat => (
+                            <article className="stat">
+                                <p  
+                                    style={{width: "20%" , textAlign: "left"}}
+                                >
+                                    {statsObj[stat.stat.name]}
+                                </p>
+                                <p>{stat.base_stat}</p>
+                                <div className="loader-wrapper">
+                                    <div style={{
+                                        backgroundColor: data ? backgroundByType[data.types[0].type.name] : "#f2f2f2",
+                                        height: "8px",
+                                        borderRadius: "10px",
+                                        width: `${stat.base_stat}%`,
+                    }}>             </div>
+                                </div>
+                            </article>
+                        ))
+                    }
+
                 </article>
                 
-                <article>
-                    resistance
-                </article>
-                
-                <article>
-                    weaknesses
-                </article>
-                
-                <article>
-                    abilities
-                </article>
-                
-                <article>
-                    characteristics
-                </article>
                 </section>
             )
         }
             
         </section>
+        </div>
     )
 }
 
+/* {data.abilities[0].ability.name}  */
 
-/* backgroundColor: data && data.types ? typesColors[data.types[1].type.name] : "white",
-
-
-                pokemon.data === [] ? "No data" :
-                <section key={data.id} >
-
-                <img src={pokemon.data[0].sprites.front_default} alt={data.name} />
-                
-                <article>
-                    <p>{`#${pokemon.data[0].id}`}</p>
-                    <h1>{pokemon.data[0].name.charAt(0).toUpperCase() + pokemon.data[0].name.slice(1)}</h1>
-                    <p
-                        style={styles}
-                    >
-                        {pokemon.data[0].types[1].type.name}
-                    </p>
-                </article>
-                
-                <article>
-                    stats
-                </article>
-                
-                <article>
-                    resistance
-                </article>
-                
-                <article>
-                    weaknesses
-                </article>
-                
-                <article>
-                    abilities
-                </article>
-                
-                <article>
-                    characteristics
-                </article>
-                </section>
-
-
-*/

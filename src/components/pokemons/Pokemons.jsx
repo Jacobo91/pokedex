@@ -15,12 +15,12 @@ export function Pokemons({ url }){
         dispatch(loadCurrentGeneration(url))
     }, [url]);
 
-    const pokemonNames = currentGeneration.generation.length === 0 ? [] : currentGeneration.generation.pokemon_species.slice(0, 9).map(pokemon => pokemon.name);
+    const pokemonNames = currentGeneration.generation.length === 0 ? [] : currentGeneration.generation.pokemon_species.slice(0, 30).map(pokemon => pokemon.name);
     
     return(
         <section>
             {
-                currentGeneration.generation.length === 0 ? "baaa" :
+                currentGeneration.generation.length === 0 ? "Loading" :
                 <header>
                     <h2>{currentGeneration.generation.name.toUpperCase()}</h2>
                     <h3>Main Region: {currentGeneration.generation.main_region.name}</h3>

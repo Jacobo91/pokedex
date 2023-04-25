@@ -18,7 +18,7 @@ export function Card({ pokemonNames }){
     return(
         <section className="gallery">
             {
-                pokemons.pokemons.length === 0 ? "No data available" :
+                pokemons.pokemons.length === 0 ? "Loading..." :
                     pokemons.pokemons.map(pokemon => (
                         <NavLink
                         to={`/Pokédex/${pokemon.name}`}

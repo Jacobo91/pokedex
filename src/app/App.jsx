@@ -1,3 +1,4 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../pages/home/Home";
 import { Pokedex } from "../pages/pokedex/Pokedex";
