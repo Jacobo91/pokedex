@@ -2,10 +2,11 @@ import "./pokemon_data.css";
 import { useParams } from "react-router-dom"
 import { selectPokemon, loadPokemon } from "../../redux/pokemon/pokemonSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { colorByType } from "../../colorByTypes";
 import { backgroundByType } from '../../backgroundByTypes';
 import { statsObj } from "../../statsObject";
+import { Evolutions } from "../evolutions/Evolutions";
 
 export function PokemonData(){
 
@@ -14,8 +15,10 @@ export function PokemonData(){
         const dispatch = useDispatch();
 
         useEffect(() => {
-            dispatch(loadPokemon(pokemon_data))
+            dispatch(loadPokemon(pokemon_data));
         }, []);
+
+        
 
         const typeColor = {
             backgroundColor: data ? colorByType[data.types[0].type.name] : "#f2f2f2",
@@ -40,7 +43,6 @@ export function PokemonData(){
             return <p>An error has ocurred while fetching the data</p>
         }
 
-        
     
     return(
         <div className="pokemon-card--wrapper" >
@@ -107,6 +109,8 @@ export function PokemonData(){
                     }
 
                 </article>
+
+                    <Evolutions url={data.species.url} />
                 
                 </section>
             )

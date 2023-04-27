@@ -19,6 +19,7 @@ export function App() {
           <Route path="/Pokédex" element={<Pokedex/>} />
             <Route path="/Pokédex/:pokemon_data" element={<PokemonData />}/>
             
+            
           <Route path="/Types" element={<Types/>} />
           <Route path="/Abilities" element={<Abilities/>} />
           <Route path="/Berries" element={<Berries/>} />
