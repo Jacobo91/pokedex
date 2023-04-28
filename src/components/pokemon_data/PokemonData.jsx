@@ -2,24 +2,38 @@ import "./pokemon_data.css";
 import { useParams } from "react-router-dom"
 import { selectPokemon, loadPokemon } from "../../redux/pokemon/pokemonSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { colorByType } from "../../colorByTypes";
 import { backgroundByType } from '../../backgroundByTypes';
 import { statsObj } from "../../statsObject";
+import { loadCurrentSpecies, selectCurrentSpecies } from "../../redux/currentSpeciesUrl/currentSpeciesSlice";
+import { loadCurrentEvolutionNames, selectCurrentEvolutionNames } from "../../redux/currentEvolutionNames/currentEvolutionNamesSlice";
 import { Evolutions } from "../evolutions/Evolutions";
 
 export function PokemonData(){
 
         const {pokemon_data} = useParams();
         const { data, isLoading, hasError } = useSelector(selectPokemon);
+        const { speciesData } = useSelector(selectCurrentSpecies);
+        const { names } = useSelector(selectCurrentEvolutionNames);
+
         const dispatch = useDispatch();
 
-        useEffect(() => {
-            dispatch(loadPokemon(pokemon_data));
-        }, []);
-
+        const speciesUrl = data && data.species.url;
+        const evolutionUrl = speciesData && speciesData.evolution_chain.url;
         
 
+        
+        
+        useEffect(() => {
+            dispatch(loadPokemon(pokemon_data));
+            dispatch(loadCurrentSpecies(speciesUrl));
+            dispatch(loadCurrentEvolutionNames(evolutionUrl));
+    
+        }, [speciesUrl, evolutionUrl]);
+
+        
+    
         const typeColor = {
             backgroundColor: data ? colorByType[data.types[0].type.name] : "#f2f2f2",
             display: "inline-block",
@@ -110,7 +124,7 @@ export function PokemonData(){
 
                 </article>
 
-                    <Evolutions url={data.species.url} />
+                    <Evolutions names={names} />
                 
                 </section>
             )
@@ -121,5 +135,5 @@ export function PokemonData(){
     )
 }
 
-/* {data.abilities[0].ability.name}  */
+
 

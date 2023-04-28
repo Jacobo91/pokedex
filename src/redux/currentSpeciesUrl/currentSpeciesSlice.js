@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const loadCurrentEvolutions = createAsyncThunk(
-    "currentEvolutions/loadCurrentEvolutions",
-    async(evolutionUrl) => {
+export const loadCurrentSpecies = createAsyncThunk(
+    "currentSpecies/loadCurrentSpecies",
+    async(speciesUrl) => {
         try{
-            const response = await fetch(evolutionUrl);
+            const response = await fetch(speciesUrl);
             const data = await response.json();
             return data;
         }
@@ -14,28 +14,27 @@ export const loadCurrentEvolutions = createAsyncThunk(
     }
 );
 
-const currentEvolutionsSlice = createSlice(
+const currentSpeciesSlice = createSlice(
     {
-        name:"currentEvolutions",
+        name: "currentSpecies",
         initialState: {
-            evolutions: [],
+            speciesData: null,
             isLoading: false,
             hasError: false,
         },
         reducers: {},
         extraReducers: (builder) => {
             builder
-                .addCase(loadCurrentEvolutions.pending, (state) => {
+                .addCase(loadCurrentSpecies.pending, (state) => {
                     state.isLoading = true;
                     state.hasError = false;
                 })
-                .addCase(loadCurrentEvolutions.fulfilled, (state, action) => {
-                    state.evolutions = action.payload;
+                .addCase(loadCurrentSpecies.fulfilled, (state, action) => {
+                    state.speciesData = action.payload;
                     state.isLoading = false;
                     state.hasError = false;
-                    console.log(action.payload);
                 })
-                .addCase(loadCurrentEvolutions.rejected, (state) => {
+                .addCase(loadCurrentSpecies.rejected, (state) => {
                     state.isLoading = false;
                     state.hasError = true;
                 })
@@ -43,5 +42,5 @@ const currentEvolutionsSlice = createSlice(
     }
 );
 
-export const selectCurrentEvolutions = state => state.currentEvolutions;
-export const currentEvolutionsReducer = currentEvolutionsSlice.reducer;
+export const selectCurrentSpecies = state => state.currentSpecies;
+export const currentSpeciesReducer = currentSpeciesSlice.reducer;

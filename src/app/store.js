@@ -3,8 +3,9 @@ import { generationsURLsReducer } from '../redux/generations/generationsURLsSlic
 import { currentGenerationReducer } from '../redux/currentGeneration/currentGenerationSlice';
 import { currentPokemonsReducer } from '../redux/currentPokemons/currentPokemonsSlice';
 import { pokemonReducer } from '../redux/pokemon/pokemonSlice';
-import { evolutionUrlReducer } from '../redux/evolutionsUrl/evolutionUrlSlice';
-import { currentEvolutionsReducer } from '../redux/currentEvolutions/currentEvolutionsSlice';
+import { currentSpeciesReducer } from '../redux/currentSpeciesUrl/currentSpeciesSlice';
+import { currentEvolutionNamesReducer } from '../redux/currentEvolutionNames/currentEvolutionNamesSlice';
+import { currentEvolutionsReducer } from '../redux/currentEvolutions/currentEvolutions';
 
 export const store = configureStore(
     {
@@ -13,7 +14,8 @@ export const store = configureStore(
             currentGeneration: currentGenerationReducer,
             currentPokemons: currentPokemonsReducer,
             pokemon: pokemonReducer,
-            evolutionUrl: evolutionUrlReducer,
+            currentSpecies: currentSpeciesReducer,
+            currentEvolutionNames:currentEvolutionNamesReducer,
             currentEvolutions: currentEvolutionsReducer,
         }
     }
