@@ -9,12 +9,15 @@ import { NavLink } from "react-router-dom";
 export function Card({ pokemonNames }){
 
     const pokemons = useSelector(selectCurrentPokemons);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(loadCurrentPokemons(pokemonNames))
     }, [pokemonNames])
     
+    
+
     return(
         <section className="gallery">
             {
@@ -27,7 +30,7 @@ export function Card({ pokemonNames }){
                         >
                                 <img 
                                     className="pokemon-img"
-                                    src={pokemon.sprites.front_default} 
+                                    src={pokemon.sprites.front_default}
                                 />  
                         </NavLink>
                     ))

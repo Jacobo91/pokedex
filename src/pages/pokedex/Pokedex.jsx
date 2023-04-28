@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Pokemons } from '../../components/pokemons/Pokemons';
+import { SearchInput } from '../../components/searchBar/SearchBar';
+
 
 export function Pokedex(){
 
@@ -18,8 +20,11 @@ export function Pokedex(){
         dispatch(loadGenerationsURLs())
     }, [url]);
 
+    
+
     return(
         <section>
+            <SearchInput/>
             <ul
                 css={css`
                     display: flex;
