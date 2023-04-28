@@ -5,14 +5,17 @@ export const loadCurrentPokemons = createAsyncThunk(
     'currentPokemons/loadCurrentPokemons',
     async(pokemonNames) => {
         try{
+            const filteredPokemonNames = pokemonNames.filter(poke => poke !== "oricorio");
             const pokemonData = [];
 
-            for (const name of pokemonNames){
+            for (const name of filteredPokemonNames){
+                
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
                 const data = await response.json();
                 pokemonData.push(data)
             }
-            return pokemonData;
+        
+            return pokemonData
             
         }
         catch(error){
@@ -40,7 +43,6 @@ const currentPokemonsSlice = createSlice(
                     state.pokemons = action.payload;
                     state.isLoading = false;
                     state.hasError = false;
-                    console.log(action.payload);
                 })
                 .addCase(loadCurrentPokemons.rejected, (state) => {
                     state.isLoading = false;

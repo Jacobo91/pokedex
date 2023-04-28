@@ -4,11 +4,12 @@ import './pokemons.css';
 import { selectCurrentGeneration, loadCurrentGeneration } from '../../redux/currentGeneration/currentGenerationSlice';
 import { useEffect } from 'react';
 import { Card } from '../card/Card';
-
+import { selectPokemon } from "../../redux/pokemon/pokemonSlice";
 
 export function Pokemons({ url }){
 
     const currentGeneration = useSelector(selectCurrentGeneration);
+    const searchResult = useSelector(selectPokemon);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,6 +29,7 @@ export function Pokemons({ url }){
             }
             <section>
                 <Card pokemonNames={pokemonNames} />
+                
             </section>
         </section>
     )
