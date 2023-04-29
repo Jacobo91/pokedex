@@ -4,7 +4,8 @@ export const loadCurrentGeneration = createAsyncThunk(
     'currentGeneration/loadCurrentGeneration',
     async(url) => {
         try{
-            const response = await fetch(url);
+            const baseURL = !url ? " https://pokeapi.co/api/v2/generation/1/" : url;
+            const response = await fetch(baseURL);
             const data = await response.json();
             return data;
         }
