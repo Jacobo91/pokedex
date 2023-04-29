@@ -1,25 +1,4 @@
 
-.pokemon-card--wrapper{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("https://st2.depositphotos.com/3213441/12022/v/950/depositphotos_120226446-stock-illustration-pokemon-go-pokeball-seamless-texture.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.pokemon-card{
-    box-shadow: 5px 5px 10px grey;
-    display: grid;
-    text-align: center;
-    justify-content: center;
-    width: 375px;
-    background-color: rgba(255,255,255, 0.96);
-    border-radius: 10px;
-}
-
 .pokemon-title{
     display: flex;
     justify-content: center;

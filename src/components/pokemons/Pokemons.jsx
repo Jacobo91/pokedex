@@ -18,7 +18,7 @@ export function Pokemons({ url }){
         dispatch(loadCurrentGeneration(url))
     }, [url]);
 
-    const pokemonNames = currentGeneration.generation.length === 0 ? [] : currentGeneration.generation.pokemon_species.slice(0, 19).map(pokemon => pokemon.name);
+    const pokemonNames = currentGeneration.generation.length === 0 ? [] : currentGeneration.generation.pokemon_species.slice(0, 26).map(pokemon => pokemon.name);
     
     return(
         <section>

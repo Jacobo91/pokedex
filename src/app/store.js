@@ -4,6 +4,7 @@ import { currentGenerationReducer } from '../redux/currentGeneration/currentGene
 import { currentPokemonsReducer } from '../redux/currentPokemons/currentPokemonsSlice';
 import { pokemonReducer } from '../redux/pokemon/pokemonSlice';
 import { currentSpeciesReducer } from '../redux/currentSpeciesUrl/currentSpeciesSlice';
+import { typesReducer } from '../redux/_types/typesSlice';
 
 const middleware = getDefaultMiddleware(
     {
@@ -20,6 +21,7 @@ export const store = configureStore(
             currentPokemons: currentPokemonsReducer,
             pokemon: pokemonReducer,
             currentSpecies: currentSpeciesReducer,
+            types: typesReducer,
         },
         middleware,
     }

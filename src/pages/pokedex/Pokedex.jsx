@@ -8,6 +8,7 @@ import { css } from '@emotion/react';
 import { Pokemons } from '../../components/pokemons/Pokemons';
 import { SearchInput } from '../../components/searchBar/SearchBar';
 import { PokeballLoader } from '../../components/pokeballLoader/PokeballLoader';
+import { ButtonStyled } from '../../styles';
 
 export function Pokedex(){
 
@@ -39,9 +40,26 @@ export function Pokedex(){
                 {
                     generations.isLoading ? "Loading" : 
                         generations.generationsURLs.map(generation => (
-                            <button                              
+                            <ButtonStyled                              
                                 key={generation.name}
-                                css={css`
+                                value={generation.url}
+                                onClick={(e) => {
+                                    setURL(e.target.value);
+                                }}
+                            >
+                                {generation.name.toUpperCase()}
+                            </ButtonStyled>
+                        ))
+                }
+            </ul>
+            <Pokemons url={url}/>
+        </section>
+    )
+}
+
+/*
+
+    css={css`
                                 background-color: ;
                                 color: black;
                                 border: none;
@@ -58,17 +76,5 @@ export function Pokedex(){
                                     color: white;
                                 }`
                             }
-                                value={generation.url}
-                                onClick={(e) => {
-                                    setURL(e.target.value);
-                                }}
-                            >
-                                {generation.name.toUpperCase()}
-                            </button>
-                        ))
-                }
-            </ul>
-            <Pokemons url={url}/>
-        </section>
-    )
-}
+
+*/
