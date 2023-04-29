@@ -28,12 +28,12 @@ export function Pokedex(){
             <ul
                 css={css`
                     display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 5px;
-                    background-color: #f2f2f2;
-                    padding: 20px;
+                    gap: 10px;
+                    overflow-x: scroll;
+                    padding: 5px;
+                    @media only screen and (min-width: 1192px){
+                        justify-content: center
+                    }
                 `}
             >
                 {
@@ -42,18 +42,22 @@ export function Pokedex(){
                             <button                              
                                 key={generation.name}
                                 css={css`
-                                    text-decoration: none;
-                                    color: black;
-                                    padding: 10px 20px;
-                                    border: 1px solid black;
-                                    border-radius: 20px;
-                                    cursor: pointer;
-                                    font-weight: bold;
-                                    &:hover {
-                                        background-color: #C12027;
-                                        color: white;
-                                    };
-                                `}
+                                background-color: ;
+                                color: black;
+                                border: none;
+                                padding: 10px 20px;
+                                font-size: 12px;
+                                border-radius: 5px;
+                                text-transform: uppercase;
+                                box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+                                transition: all 0.3s ease-in-out;
+                                cursor: pointer;
+                                &:hover {
+                                    background-color: #6b6b6b;
+                                    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+                                    color: white;
+                                }`
+                            }
                                 value={generation.url}
                                 onClick={(e) => {
                                     setURL(e.target.value);
