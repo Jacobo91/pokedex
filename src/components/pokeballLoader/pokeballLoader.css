@@ -1,0 +1,117 @@
+.pokeball-loader {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: pokeball-spin 1.5s ease-in-out infinite;   
+}
+
+.pokeball-loader__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #ff0000;
+    border-bottom: 2px solid #000;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.pokeball-loader__bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #fff;
+    border-top: 2px solid #000;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.pokeball-loader__stripe {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+}
+
+.pokeball-loader__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 25%;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 2px #000;
+    overflow: hidden;
+    animation: pokeball-catch 1s ease-in-out infinite;
+}
+
+.pokeball-loader__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 10%;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0px 2px #000;
+}
+
+.pokeball-loader__button:first-child {
+    transform: translate(-35%, -50%);
+}
+
+.pokeball-loader__button:last-child {
+    transform: translate(35%, -50%);
+}
+
+.pokeball-loader__light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: #ff0000;
+    opacity: 0;
+    border-radius: 50%;
+    animation: pokeball-light 1s ease-in-out infinite;
+}
+
+.pokeball-loader__inner.is-catching .pokeball-loader__light {
+    opacity: 1;
+}
+
+
+
+@keyframes pokeball-catch {
+    0% {
+        transform: translate(-50%, -50%) scale(1);     
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+        background-color: rgb(236, 40, 40);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);       
+    }
+}
+
+
+
+
+
+

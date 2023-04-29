@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { Pokemons } from '../../components/pokemons/Pokemons';
 import { SearchInput } from '../../components/searchBar/SearchBar';
-
+import { PokeballLoader } from '../../components/pokeballLoader/PokeballLoader';
 
 export function Pokedex(){
 

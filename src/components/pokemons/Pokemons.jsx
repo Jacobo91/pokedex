@@ -23,7 +23,7 @@ export function Pokemons({ url }){
     return(
         <section>
             {
-                currentGeneration.generation.length === 0 ? "Loading" :
+                currentGeneration.generation.length === 0 ? "" :
                 <header css={css`
                     text-align: center;
                     padding: 20px;
@@ -32,9 +32,8 @@ export function Pokemons({ url }){
                     <h3>Main Region: {currentGeneration.generation.main_region.name}</h3>
                 </header>
             }
-            <section>
+            <section >
                 <Card pokemonNames={pokemonNames} />
-                
             </section>
         </section>
     )

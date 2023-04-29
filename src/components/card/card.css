@@ -1,13 +1,17 @@
 
+
 .gallery{
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 20px;
     place-items: center;
+    grid-auto-flow: dense;
 }
 
 .pokemon-img{
     width: 150px;
     height: 150px;
 }
+
+
