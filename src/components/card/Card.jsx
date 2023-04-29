@@ -19,7 +19,7 @@ export function Card({ pokemonNames }){
     }, [pokemonNames])
 
     if(pokemons.hasError){
-        return <p>The data had a problem while being fetched</p>
+        return <p>This pokemon is not available in the data base</p>
     }
 
     return(

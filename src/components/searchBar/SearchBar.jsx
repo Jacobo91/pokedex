@@ -35,7 +35,7 @@ export function SearchInput(){
                 type="text"
                 placeholder="Search pokemon by name"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm([e.target.value])}
+                onChange={(e) => setSearchTerm([e.target.value.toLowerCase()])}
             />
             <img 
                 src={pokeball} 
