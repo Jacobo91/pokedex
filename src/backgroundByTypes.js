@@ -3,7 +3,7 @@ export const backgroundByType = {
     fire: '#FE9441', 
     water: '#8AC4CD', 
     grass: '#7FB535', 
-    electric: 'gold', 
+    electric: '#d9c138', 
     ice: 'lightblue', 
     fighting: '#CA2E30', 
     poison: '#CA60B1', 

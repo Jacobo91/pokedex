@@ -21,6 +21,8 @@ export function App() {
             
             
           <Route path="/Types" element={<Types/>} />
+
+          
           <Route path="/Abilities" element={<Abilities/>} />
           <Route path="/Berries" element={<Berries/>} />
           <Route path="/Items" element={<Items/>} />

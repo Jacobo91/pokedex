@@ -9,6 +9,8 @@ import { statsObj } from "../../statsObject";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { PokeballLoader } from "../pokeballLoader/PokeballLoader";
+import { PokemonCard,
+    PokemonCardWrapper } from "../../styles";
 
 export function PokemonData(){
     const {pokemon_data} = useParams();
@@ -54,8 +56,8 @@ export function PokemonData(){
                     <PokeballLoader/>
                 </div> 
                 :
-                <div className="pokemon-card--wrapper" >
-                <section className="pokemon-card">
+                <PokemonCardWrapper>
+                <PokemonCard>
                     {   
                         data.pokemon  && (
                             <section key={data.pokemon.id} >
@@ -136,8 +138,8 @@ export function PokemonData(){
                         )
                     }
                         
-                    </section>
-            </div>
+                    </PokemonCard>
+            </PokemonCardWrapper>
             }
         </section>
     )
