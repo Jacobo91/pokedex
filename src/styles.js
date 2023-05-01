@@ -1,4 +1,9 @@
 import  styled  from "@emotion/styled";
+import { css } from "@emotion/react";
+import { backgroundByType } from "./backgroundByTypes";
+
+
+
 
 export const SearchBar = styled.input`
     width: 60%;
@@ -70,3 +75,41 @@ export const PWrapper = styled.p`
     margin-inline: 5px;
     margin: 5px;
 `
+export function getWrapperStyles(itemName){
+    return css`
+        background-color: ${backgroundByType[itemName]};
+        padding: 5px 15px;
+        border-radius: 20px;
+        color: white;
+        text-transform: uppercase;
+    `;
+}
+
+export const InfoP = styled.article`
+    box-shadow: 5px 5px 10px grey;
+    padding: 20px;
+    display: grid;
+    place-items: center;
+    gap: 20px;
+`;
+
+export const MyForm = styled.form`
+display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f2f2f2;background: linear-gradient(166deg, rgba(239,234,241,1) 5%, rgba(164,163,164,1) 80%);
+`;
+
+export const ItemsImage = styled.img`
+    width: 50px;
+`;
+
+export const ItemCard = styled.article`
+    box-shadow: 3px 5px 10px grey;
+    padding: 20px;
+    text-align: center;
+    max-width: 330px;
+    background-color: rgba(255,255,255, 0.96);
+    border-radius: 10px;
+`;

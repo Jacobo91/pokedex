@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import { Pokemons } from '../../components/pokemons/Pokemons';
 import { SearchInput } from '../../components/searchBar/SearchBar';
 import { PokeballLoader } from '../../components/pokeballLoader/PokeballLoader';
-import { ButtonStyled } from '../../styles';
+import { ButtonStyled, ButtonsWrapper } from '../../styles';
 
 export function Pokedex(){
 
@@ -40,7 +40,8 @@ export function Pokedex(){
                 {
                     generations.isLoading ? "Loading" : 
                         generations.generationsURLs.map(generation => (
-                            <ButtonStyled                              
+
+                            <ButtonStyled
                                 key={generation.name}
                                 value={generation.url}
                                 onClick={(e) => {
@@ -49,6 +50,7 @@ export function Pokedex(){
                             >
                                 {generation.name.toUpperCase()}
                             </ButtonStyled>
+
                         ))
                 }
             </ul>
