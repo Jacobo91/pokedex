@@ -8,6 +8,7 @@ import { Moves } from '../pages/moves/Moves';
 import { Locations } from '../pages/locations/Locations';
 import { PokemonData } from "../components/pokemon_data/PokemonData";
 import { ItemInfo } from "../components/ItemInfo/ItemInfo";
+import { MoveInfo } from "../components/moveInfo/MoveInfo";
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
             <Route path="/Items/:item" element={<ItemInfo/>}/>
 
           <Route path="/Moves" element={<Moves/>} />
+            <Route path="/Moves/:move" element={<MoveInfo/>} />
           
           <Route path="/Locations" element={<Locations/>} />
         </Routes>

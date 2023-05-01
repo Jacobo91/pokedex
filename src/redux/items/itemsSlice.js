@@ -6,8 +6,8 @@ export const loadItems = createAsyncThunk(
     async(item) => {
         try{
             if (item){
-                
-                const itemResponse = await fetch(`https://pokeapi.co/api/v2/item/${item}`);
+                const itemName = item.toLowerCase().replace(" ", "-")
+                const itemResponse = await fetch(`https://pokeapi.co/api/v2/item/${itemName}`);
                 const itemData = await itemResponse.json();
                 return itemData
             } else {
