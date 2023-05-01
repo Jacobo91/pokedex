@@ -113,3 +113,28 @@ export const ItemCard = styled.article`
     background-color: rgba(255,255,255, 0.96);
     border-radius: 10px;
 `;
+
+export function getButtonStyle(){
+    return css`
+    padding: 20px; 
+    text-decoration: none; 
+    color: black;
+    display: grid;
+    place-items: center;
+    background-color: ;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background-color: #6b6b6b;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        color: white;
+    `
+}
+
+export const MyTd = styled.td`
+    padding: 20px;
+`;
