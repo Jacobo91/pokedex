@@ -12,9 +12,12 @@ import {
     PokemonCardWrapper,
     PokemonCard,
     CardTitles,
-    PWrapper } from '../../styles';
+    PWrapper,
+    getWrapperStyles,
+    InfoP } from '../../styles';
 import { PokeballLoader } from '../../components/pokeballLoader/PokeballLoader';
 import { backgroundByType } from '../../backgroundByTypes';
+import pokemonLogo from '../../images/pokemon_logo.png';
 
 export function Types(){
 
@@ -37,7 +40,7 @@ export function Types(){
 
                     : hasError ? (<section>error</section>)
                     
-                    : data && 
+                    : data &&
                         (
                             <section>
                                 <section>
@@ -55,137 +58,125 @@ export function Types(){
                                         }
                                     </ButtonsWrapper>
                                 </section>
-                                <section>
                                         {
-                                            data.filter(type => type.name === currentType)
-                                                .map(filteredType => (
-                                                    <PokemonCardWrapper key={filteredType.id}>
-                                                        <PokemonCard>
-                                                        
-                                                            <CardTitles
-                                                                style={{
-                                                                    backgroundColor: backgroundByType[filteredType.name],
-                                                                    borderRadius: "20px",
-                                                                    margin: "1.2rem",
-                                                                    color: "white",
-                                                                }}
-                                                            >
-                                                                {filteredType.name.toUpperCase()}
-                                                            </CardTitles>
+                                            !currentType ? (
+                                                <section 
+                                                    css={css`
+                                                        height: 100vh;
+                                                        display: grid;
+                                                        place-items: center;
+                                                    `}
+                                                >
+                                                    <img 
+                                                        src={pokemonLogo} 
+                                                        alt="pokemon logo"
+                                                        css={css`
+                                                            width: 18rem;
+                                                        `}
+                                                    />
+                                                    <InfoP>
+                                                        <i className="fa-solid fa-info"></i>
+                                                        <p>Please select a type from the top menu</p>
+                                                    </InfoP>
+                                                </section>
+                                            )
+                                                :
+                                        <section>
+                                            {
+                                                data.filter(type => type.name === currentType)
+                                                    .map(filteredType => (
+                                                        <PokemonCardWrapper key={filteredType.id}>
+                                                            <PokemonCard>
 
-                                                            <section>
-                                                                <h2
-                                                                    css={css`
-                                                                        text-decoration: underline;
-                                                                    `}
+                                                                <CardTitles
+                                                                    style={{
+                                                                        backgroundColor: backgroundByType[filteredType.name],
+                                                                        borderRadius: "20px",
+                                                                        margin: "1.2rem",
+                                                                        color: "white",
+                                                                    }}
                                                                 >
-                                                                    Damage Relations
-                                                                </h2>
-                                                                <article>
-                                                                    <CardTitles>Double damage from:</CardTitles> {
-                                                                        filteredType.damage_relations.double_damage_from.length === 0 ? "N/A" :
-                                                                            filteredType.damage_relations.double_damage_from.map(item => 
+                                                                    {filteredType.name.toUpperCase()}
+                                                                </CardTitles>
+
+                                                                <section>
+                                                                    <h2
+                                                                        css={css`
+                                                                                text-decoration: underline;
+                                                                            `}
+                                                                    >
+                                                                        Damage Relations
+                                                                    </h2>
+                                                                    <article>
+                                                                        <CardTitles>Double damage from:</CardTitles> {
+                                                                            filteredType.damage_relations.double_damage_from.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.double_damage_from.map(item =>
                                                                                 (<PWrapper
-                                                                                    style={{
-                                                                                        backgroundColor: backgroundByType[item.name],
-                                                                                        padding: "5px 15px",
-                                                                                        borderRadius: "20px",
-                                                                                        color: "white",
-                                                                                        textTransform: "uppercase",
-                                                                                    }}
+                                                                                    css={getWrapperStyles(item.name)}
                                                                                 >
                                                                                     {item.name}
                                                                                 </PWrapper>))
-                                                                    }
-                                                                    <CardTitles>Double damage to:</CardTitles>
-                                                                    {
-                                                                        filteredType.damage_relations.double_damage_to.length === 0 ? "N/A" :
-                                                                        filteredType.damage_relations.double_damage_to.map(item => 
-                                                                            (<PWrapper
-                                                                                style={{
-                                                                                    backgroundColor: backgroundByType[item.name],
-                                                                                    padding: "5px 15px",
-                                                                                    borderRadius: "20px",
-                                                                                    color: "white",
-                                                                                    textTransform: "uppercase",
-                                                                                }}
-                                                                            >
-                                                                                {item.name}
-                                                                            </PWrapper>))
-                                                                    }
-                                                                    <CardTitles>Half damage from:</CardTitles>
-                                                                    {
-                                                                        filteredType.damage_relations.half_damage_from.length === 0 ? "N/A" :
-                                                                        filteredType.damage_relations.half_damage_from.map(item => 
-                                                                            (<PWrapper
-                                                                                style={{
-                                                                                    backgroundColor: backgroundByType[item.name],
-                                                                                    padding: "5px 15px",
-                                                                                    borderRadius: "20px",
-                                                                                    color: "white",
-                                                                                    textTransform: "uppercase",
-                                                                                }}
-                                                                            >
-                                                                                {item.name}
-                                                                            </PWrapper>))
-                                                                    }
-                                                                    <CardTitles>Half damage to:</CardTitles>
-                                                                    {
-                                                                        filteredType.damage_relations.half_damage_to.length === 0 ? "N/A" :
-                                                                        filteredType.damage_relations.half_damage_to.map(item => 
-                                                                            (<PWrapper
-                                                                                style={{
-                                                                                    backgroundColor: backgroundByType[item.name],
-                                                                                    padding: "5px 15px",
-                                                                                    borderRadius: "20px",
-                                                                                    color: "white",
-                                                                                    textTransform: "uppercase",
-                                                                                }}
-                                                                            >
-                                                                                {item.name}
-                                                                            </PWrapper>))
-                                                                    }
-                                                                    <CardTitles>No damage from:</CardTitles>
-                                                                    {
-                                                                        filteredType.damage_relations.no_damage_from.length === 0 ? "N/A" :
-                                                                        filteredType.damage_relations.no_damage_from.map(item => 
-                                                                            (<PWrapper
-                                                                                style={{
-                                                                                    backgroundColor: backgroundByType[item.name],
-                                                                                    padding: "5px 15px",
-                                                                                    borderRadius: "20px",
-                                                                                    color: "white",
-                                                                                    textTransform: "uppercase",
-                                                                                }}
-                                                                            >
-                                                                                {item.name}
-                                                                            </PWrapper>))
-                                                                    }
-                                                                    <CardTitles>No damage to:</CardTitles>
-                                                                    {
-                                                                        filteredType.damage_relations.no_damage_to.length === 0 ? "N/A" :
-                                                                        filteredType.damage_relations.no_damage_to.map(item => 
-                                                                            (<PWrapper
-                                                                                style={{
-                                                                                    backgroundColor: backgroundByType[item.name],
-                                                                                    padding: "5px 15px",
-                                                                                    borderRadius: "20px",
-                                                                                    color: "white",
-                                                                                    textTransform: "uppercase",
-                                                                                }}
-                                                                            >
-                                                                                {item.name}
-                                                                            </PWrapper>))
-                                                                    }
-                                                                </article>
-                                                            </section>
-                                                        </PokemonCard>
-                                                    </PokemonCardWrapper>
-                                                ))
+                                                                        }
+                                                                        <CardTitles>Double damage to:</CardTitles>
+                                                                        {
+                                                                            filteredType.damage_relations.double_damage_to.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.double_damage_to.map(item =>
+                                                                                (<PWrapper
+                                                                                    css={getWrapperStyles(item.name)}
+                                                                                >
+                                                                                    {item.name}
+                                                                                </PWrapper>))
+                                                                        }
+                                                                        <CardTitles>Half damage from:</CardTitles>
+                                                                        {
+                                                                            filteredType.damage_relations.half_damage_from.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.half_damage_from.map(item =>
+                                                                                (<PWrapper
+                                                                                    css={getWrapperStyles(item.name)}
+                                                                                >
+                                                                                    {item.name}
+                                                                                </PWrapper>))
+                                                                        }
+                                                                        <CardTitles>Half damage to:</CardTitles>
+                                                                        {
+                                                                            filteredType.damage_relations.half_damage_to.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.half_damage_to.map(item =>
+                                                                                (<PWrapper
+                                                                                    css={getWrapperStyles(item.name)}
+                                                                                >
+                                                                                    {item.name}
+                                                                                </PWrapper>))
+                                                                        }
+                                                                        <CardTitles>No damage from:</CardTitles>
+                                                                        {
+                                                                            filteredType.damage_relations.no_damage_from.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.no_damage_from.map(item =>
+                                                                                (<PWrapper
+                                                                                    css={getWrapperStyles(item.name)}
+                                                                                >
+                                                                                    {item.name}
+                                                                                </PWrapper>))
+                                                                        }
+                                                                        <CardTitles>No damage to:</CardTitles>
+                                                                        {
+                                                                            filteredType.damage_relations.no_damage_to.length === 0 ? "N/A" :
+                                                                                filteredType.damage_relations.no_damage_to.map(item =>
+                                                                                (<PWrapper
+                                                                                    css={getWrapperStyles(item.name)}
+                                                                                >
+                                                                                    {item.name}
+                                                                                </PWrapper>))
+                                                                        }
+                                                                    </article>
+                                                                </section>
+                                                            </PokemonCard>
+                                                        </PokemonCardWrapper>
+                                                    ))
+                                            }
+                                        </section>
                                         }
-                                </section>
                             </section>
-                        )
+                        ) 
             }
         </section>
     )

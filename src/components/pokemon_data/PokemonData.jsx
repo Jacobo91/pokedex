@@ -111,7 +111,7 @@ export function PokemonData(){
                                                     backgroundColor: data.pokemon ? backgroundByType[data.pokemon.types[0].type.name] : "#f2f2f2",
                                                     height: "8px",
                                                     borderRadius: "10px",
-                                                    width: `${stat.base_stat}%`,
+                                                    width: `${stat.base_stat > 100 ? 100 : stat.base_stat}%`,
                                 }}>             </div>
                                             </div>
                                         </article>

@@ -34,12 +34,6 @@ main{
     position: relative;
 }
 
-.Abilities{
-    height: 200px;
-    background-color: rgb(118, 212, 17);
-    position: relative;
-}
-
 .Berries{
     height: 200px;
     background-color: rgb(0, 166, 255);
@@ -53,15 +47,15 @@ main{
 }
 
 .Moves{
-    background-color: skyblue;
-    height: 100px;
+    background-color: rgb(118, 212, 17);
+    height: 200px;
     position: relative;
     color: black;
 }
 
 .Locations{
     background-color: lightcoral;
-    height: 100px;
+    height: 200px;
     position: relative;
     color: black;
 }

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import pokeball  from "../../images/pokeball.png";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { MyForm } from "../../styles";
 
 export function SearchInput(){
 
@@ -20,20 +21,13 @@ export function SearchInput(){
 
 
     return(
-        <form 
-            css={css`
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 20px;
-                background: #f2f2f2;background: linear-gradient(166deg, rgba(239,234,241,1) 5%, rgba(164,163,164,1) 80%);
-            `}
+        <MyForm 
             action=""
             onSubmit={handleSubmit}
         >
             <SearchBar
                 type="text"
-                placeholder="Search pokemon by name"
+                placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm([e.target.value.toLowerCase()])}
             />
@@ -47,6 +41,6 @@ export function SearchInput(){
                     margin: 0 20px;
                 `}
             />
-        </form>
+        </MyForm>
     )
 }

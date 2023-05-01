@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { NavLink } from "react-router-dom";
 import { PokeballLoader } from '../../components/pokeballLoader/PokeballLoader';
 
-const navlinks = ["Pokédex", "Types", "Abilities", "Berries", "Items", "Moves", "Locations"];
+const navlinks = ["Pokédex", "Types", "Items", "Moves", "Locations"];
 
 export function Home(){
     return(
@@ -19,11 +19,6 @@ export function Home(){
                                 <h2 className='link-title'>
                                     {link}
                                 </h2>
-                                <div css={css` padding: 10px `}>
-                                    {
-                                        link === "Pokédex" ? <PokeballLoader/> : ""
-                                    }
-                                </div>
                             </NavLink>
                     ))
                 }
