@@ -7,6 +7,7 @@ import { currentSpeciesReducer } from '../redux/currentSpeciesUrl/currentSpecies
 import { typesReducer } from '../redux/_types/typesSlice';
 import { itemsReducer } from '../redux/items/itemsSlice';
 import { movesReducer } from '../redux/moves/movesSlice';
+import { locationsReducer } from '../redux/locations/locationsSlice';
 
 const middleware = getDefaultMiddleware(
     {
@@ -26,6 +27,7 @@ export const store = configureStore(
             types: typesReducer,
             items: itemsReducer,
             moves: movesReducer,
+            locations: locationsReducer,
         },
         middleware,
     }
