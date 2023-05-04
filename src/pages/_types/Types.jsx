@@ -43,7 +43,17 @@ export function Types(){
                     : data &&
                         (
                             <section>
-                                <section>
+                                <section
+                                    css={css`
+                                    display: flex;
+                                    gap: 10px;
+                                    overflow-x: scroll;
+                                    padding: 5px;
+                                    @media only screen and (min-width: 1192px){
+                                        justify-content: center
+                                    }
+                                `}
+                                >
                                     <ButtonsWrapper>
                                         {
                                             data.map(type => (
