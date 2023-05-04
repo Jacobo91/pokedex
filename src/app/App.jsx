@@ -9,6 +9,7 @@ import { Locations } from '../pages/locations/Locations';
 import { PokemonData } from "../components/pokemon_data/PokemonData";
 import { ItemInfo } from "../components/ItemInfo/ItemInfo";
 import { MoveInfo } from "../components/moveInfo/MoveInfo";
+import { LocationsPresentational } from "../components/locationsPresentational/LocationsPresentational";
 
 export function App() {
   return (
@@ -29,6 +30,7 @@ export function App() {
             <Route path="/Moves/:move" element={<MoveInfo/>} />
           
           <Route path="/Locations" element={<Locations/>} />
+            <Route path="/Locations/:area" element={<LocationsPresentational/>} />
         </Routes>
     </div>
   );

@@ -56,6 +56,7 @@ export const PokemonCardWrapper = styled.section`
 `;
 
 export const PokemonCard = styled.section`
+    
     box-shadow: 5px 5px 10px grey;
     display: grid;
     text-align: center;
@@ -63,6 +64,12 @@ export const PokemonCard = styled.section`
     width: 375px;
     background-color: rgba(255,255,255, 0.96);
     border-radius: 10px;
+    
+`;
+
+export const PokemonCardVariation = styled(PokemonCard)`
+    max-height: 800px;
+    overflow-y: scroll;
 `;
 
 export const CardTitles = styled.h4`

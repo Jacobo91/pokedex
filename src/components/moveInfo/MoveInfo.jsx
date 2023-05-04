@@ -18,7 +18,7 @@ export function MoveInfo(){
     useEffect(() => {
         dispatch(loadMoves(move));
     }, [move])
-    console.log(data)
+   
     return(
         <PokemonCardWrapper>
             {
